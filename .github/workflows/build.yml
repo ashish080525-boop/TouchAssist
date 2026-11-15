@@ -1,17 +1,27 @@
 name: Build APK
-on: push
+
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Build Debug APK
-        run: cd TouchAssist && chmod +x gradlew && ./gradlew assembleDebug
-      - uses: actions/upload-artifact@v4
+
+      - name: Build with Gradle
+        run: |
+          cd TouchAssist
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
         with:
           name: TouchAssist-APK
           path: TouchAssist/app/build/outputs/apk/debug/*.apk
