@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TouchAssist</string>
+    <string name="accessibility_description">TouchAssist uses accessibility to perform Home, Back, Recents, Screenshot, and Lock Screen actions from the floating button. No data is collected.</string>
+</resources>
